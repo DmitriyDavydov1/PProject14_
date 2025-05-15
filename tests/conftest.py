@@ -44,7 +44,7 @@ def product():
 @pytest.fixture
 def path_products_json():
     """Путь до products.json"""
-    return "../data/products.json"
+    return "../PProject14_/data/products.json"
 
 
 @pytest.fixture
