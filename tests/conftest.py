@@ -73,3 +73,38 @@ def data_products_json():
             ],
         },
     ]
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+product3 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+
+category1 = Category(
+    "Смартфоны",
+    "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+    [product1, product2],
+)
+category2 = Category(
+    "Телевизоры",
+    "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+    [product3],
+)
+
+@pytest.fixture
+def products():
+    """Фикстура, использующаяся для тестирования классов Product и Category"""
+    return product1, product2, product3
+
+
+@pytest.fixture
+def categories():
+    """Фикстура, использующаяся для тестирования класса Category"""
+    return category1, category2
+
+
+@pytest.fixture
+def product_dict():
+    return (
+        {"name": "Phone", "description": "Some description", "price": 10000, "quantity": 1},
+        {"name": "Phone", "description": "Some description", "price": 20000, "quantity": 1},
+        {"name": "Phone", "description": "Some description", "price": 5000, "quantity": 1},
+    )
