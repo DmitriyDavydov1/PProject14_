@@ -16,6 +16,7 @@ class Category:
         """Добавление объекта в приватный атрибут __products"""
         self.__products.append(product)
         Category.product_count += 1
+        return product
 
     @property
     def products(self):

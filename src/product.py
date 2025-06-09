@@ -29,6 +29,9 @@ class Product:
 
         # Проверка наличия такого же товара схожего по имени
         for product in Product.all_products:
+            # Проверяем, что элемент списка является экземпляром Product
+            if not isinstance(product, Product):
+                continue
             if name == product.name:
                 # Обновление количества товара
                 product.quantity += quantity
