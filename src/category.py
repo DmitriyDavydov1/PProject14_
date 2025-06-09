@@ -1,28 +1,36 @@
+from src.product import Product
+
+
 class Category:
-    name: str  # название
-    description: str  # описание
-    products: list  # список товаров категории
+    name: str
+    description: str
     category_count = 0
     product_count = 0
 
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.__products = products
-        Category.category_count += 1
-        Category.product_count += len(products)
+        self.__products = []
 
-    def add_product(self, product):
-        """Добавление объекта в приватный атрибут __products"""
+        # Добавляем начальные продукты с проверкой типа
+        for product in products:
+            self.add_product(product, update_count=False)
+
+        Category.category_count += 1
+
+    def add_product(self, product, update_count=True):
+        """Добавление продукта с проверкой типа"""
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты класса Product или его наследников")
+
         self.__products.append(product)
-        Category.product_count += 1
+        if update_count:
+            Category.product_count += 1
         return product
 
     @property
     def products(self):
-        """Возвращение информации по товару в виде строки:
-        Название продукта, _ руб. Остаток: _ шт."""
-        products_str = ""
-        for product in self.__products:
-            products_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
-        return products_str
+        """Форматированный вывод продуктов"""
+        return "\n".join(
+            f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт."
+            for p in self.__products)
