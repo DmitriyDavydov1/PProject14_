@@ -19,6 +19,15 @@ class Product:
 
         Product.all_products.append(self)
 
+    def __str__(self):
+        """Возвращение информации по товару в виде строки:
+        Название продукта, _ руб. Остаток: _ шт."""
+        return f"{self.name}, {round(self.price)} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        """Метод для сложения товаров и получения полной стоимости всех товаров на складе."""
+        return round(self.price * self.quantity + other.price * other.quantity)
+
     @classmethod
     def new_product(cls, product_dict):
         """Класс-метод для создания нового продукта или обновления существующего."""
