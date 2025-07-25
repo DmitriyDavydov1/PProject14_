@@ -18,6 +18,12 @@ class Category:
 
         Category.category_count += 1
 
+    def __str__(self):
+        """Возвращение информации по товару в виде строки:
+        Название категории, количество продуктов: _ шт."""
+        total = sum(product.quantity for product in self.__products)
+        return f"{self.name}, количество продуктов: {total} шт."
+
     def add_product(self, product, update_count=True):
         """Добавление продукта с проверкой типа"""
         if not isinstance(product, Product):

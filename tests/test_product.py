@@ -56,3 +56,14 @@ def test_product_set_negative_price(products):
 
     product.price = -10
     assert product.price == 100_000
+
+
+def test_product_str(products):
+    """Тестирует отображение информации о продукте в виде строки"""
+    product1 = products[1]
+    assert str(product1) == "Iphone 15, 210000 руб. Остаток: 8 шт."
+
+
+def test_product_add(products):
+    """Тестирует сложение товаров и получение полной стоимости всех товаров на складе"""
+    assert products[1] + products[2] == 2_541_000
