@@ -1,7 +1,9 @@
 import pytest
 
 from src.category import Category
+from src.lawn_grass import LawnGrass
 from src.product import Product
+from src.smartphone import Smartphone
 
 
 @pytest.fixture
@@ -110,3 +112,27 @@ def product_dict():
         {"name": "Phone", "description": "Some description", "price": 20000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 5000, "quantity": 1},
     )
+
+
+@pytest.fixture
+def smartphone1():
+    """Фикстура для тестирования класса Smartphone"""
+    return Smartphone("Smartphone1", "Description1", 50_000.0, 5, 98.2, "Model X", 250, "Black")
+
+
+@pytest.fixture
+def smartphone2():
+    """Фикстура для тестирования класса Smartphone"""
+    return Smartphone("Smartphone2", "Description2", 40_000.0, 10, 78.2, "Model Y", 150, "White")
+
+
+@pytest.fixture
+def lawn_grass1():
+    """Фикстура для тестирования класса LawnGrass"""
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def lawn_grass2():
+    """Фикстура для тестирования класса LawnGrass"""
+    return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
