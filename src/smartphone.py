@@ -15,11 +15,11 @@ class Smartphone(Product):
 
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
         """Конструктор для инициализации экземпляра класса Smartphone."""
-        super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
         self.color = color
+        super().__init__(name, description, price, quantity)
 
     def __add__(self, other):
         """Метод для сложения товаров и получения полной стоимости всех товаров на складе"""
