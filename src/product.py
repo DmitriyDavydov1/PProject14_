@@ -1,7 +1,10 @@
 from typing import List
 
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
 
-class Product:
+
+class Product(BaseProduct, PrintMixin):
     # Атрибут на уровне класса для хранения экземпляров класса в виде списка
     all_products: List["Product"] = list()
 
@@ -16,6 +19,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
         Product.all_products.append(self)
 
@@ -26,7 +30,9 @@ class Product:
 
     def __add__(self, other):
         """Метод для сложения товаров и получения полной стоимости всех товаров на складе."""
-        return round(self.price * self.quantity + other.price * other.quantity)
+        if isinstance(other, Product):
+            return round(self.price * self.quantity + other.price * other.quantity)
+        raise TypeError()
 
     @classmethod
     def new_product(cls, product_dict):

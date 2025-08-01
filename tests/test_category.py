@@ -9,7 +9,7 @@ def test_category_init(category_without_products):
 
 
 def test_product_count(category_with_two_products):
-    assert category_with_two_products.product_count == 0
+    assert category_with_two_products.product_count == 5
 
 
 def test_category_count(category_with_one_product):
@@ -19,7 +19,8 @@ def test_category_count(category_with_one_product):
 def test_add_product(categories, products):
     """Тестирует метод add_product"""
     categories[0].add_product(products[2])
-    assert Category.product_count == 1
+    assert Category.product_count == 7
+
 
 def test_category_str(categories):
     """Тестирует отображение информации о категории в виде строки"""

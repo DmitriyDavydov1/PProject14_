@@ -46,7 +46,7 @@ def product():
 @pytest.fixture
 def path_products_json():
     """Путь до products.json"""
-    return "../PProject14_/data/products.json"
+    return "../Pproject14_/data/products.json"
 
 
 @pytest.fixture
@@ -107,6 +107,7 @@ def categories():
 
 @pytest.fixture
 def product_dict():
+    """Фикстура, использующаяся для тестирования классов Product и Category"""
     return (
         {"name": "Phone", "description": "Some description", "price": 10000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 20000, "quantity": 1},

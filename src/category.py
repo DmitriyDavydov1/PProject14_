@@ -14,7 +14,7 @@ class Category:
 
         # Добавляем начальные продукты с проверкой типа
         for product in products:
-            self.add_product(product, update_count=False)
+            self.add_product(product)
 
         Category.category_count += 1
 
@@ -36,7 +36,12 @@ class Category:
 
     @property
     def products(self):
-        """Форматированный вывод продуктов"""
+        """Возвращает список продуктов"""
+        return self.__products
+
+    def formatted_products(self):
+        """Возвращает форматированную строку с продуктами"""
         return "\n".join(
             f"{p.name}, {p.price} руб. Остаток: {p.quantity} шт."
-            for p in self.__products)
+            for p in self.__products
+        )

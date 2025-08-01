@@ -1,8 +1,5 @@
 import pytest
 
-from src.lawn_grass import LawnGrass
-from src.smartphone import Smartphone
-
 
 def test_lawn_grass_init(lawn_grass1):
     """Тестирует инициализацию экземпляра класса LawnGrass"""
