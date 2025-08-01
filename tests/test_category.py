@@ -1,4 +1,7 @@
+import pytest
+
 from src.category import Category
+from src.product import Product
 
 
 def test_category_init(category_without_products):
@@ -26,3 +29,19 @@ def test_category_str(categories):
     """Тестирует отображение информации о категории в виде строки"""
     category = categories[0]
     assert str(category) == "Смартфоны, количество продуктов: 20 шт."
+
+def test_category_add_product_zero_error(capsys, categories):
+    """Тестирует метод add_product с нулевым количеством товара"""
+    with pytest.raises(ValueError):
+        Product("Тест", "Количество: 0", 10, 0)
+
+
+def test_avg_price(categories):
+    """Тестирует подсчет среднего ценника всех товаров"""
+    assert categories[0].middle_price() == 171_000.0
+
+
+def test_middle_price_empty():
+    """Тестирует подсчет среднего ценника в пустом списке товаров"""
+    category = Category("Category", "Description", [])
+    assert category.middle_price() == 0.0

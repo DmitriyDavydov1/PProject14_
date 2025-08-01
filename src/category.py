@@ -28,11 +28,24 @@ class Category:
         """Добавление продукта с проверкой типа"""
         if not isinstance(product, Product):
             raise TypeError("Можно добавлять только объекты класса Product или его наследников")
+        if product.quantity == 0:
+            raise ValueError("Невозможно добавить товар с нулевым количеством.")
 
-        self.__products.append(product)
+        else:
+            self.__products.append(product)
         if update_count:
             Category.product_count += 1
         return product
+
+    def middle_price(self):
+        """Метод, который подсчитывает средний ценник всех товаров"""
+        total = sum(product.price for product in self.__products)
+        try:
+            avg = total / len(self.__products)
+        except ZeroDivisionError:
+            return 0.0
+        else:
+            return round(avg, 2)
 
     @property
     def products(self):
